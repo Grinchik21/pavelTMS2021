@@ -4,6 +4,7 @@ public class Main2 {
 
         int i = 0;
         int i2 = 0;
+        int i3 = 0;
         System.out.println("sakfj");
         System.out.println("sakfj");
 
