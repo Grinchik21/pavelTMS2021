@@ -7,6 +7,7 @@ public class Main2 {
         int i3 = 0;
         System.out.println("sakfj");
         System.out.println("sakfj");
+        System.out.println("sakfj");
 
     }
 }
