@@ -15,7 +15,9 @@ public class HomeWork {
         printPrimeNumbers();
         if (true) {
             System.out.println("sdf");
-        } else System.out.println("d");
+        } else {
+            System.out.println("d");
+        }
     }
 
     /**
