@@ -13,11 +13,6 @@ public class HomeWork {
         foobar(15);
         printMatrix();
         printPrimeNumbers();
-        if (true) {
-            System.out.println("sdf");
-        } else {
-            System.out.println("d");
-        }
     }
 
     /**
