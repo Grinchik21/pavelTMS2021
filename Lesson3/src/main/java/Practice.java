@@ -3,6 +3,7 @@ public class Practice {//начало класса
     public static void main(String[] args) { //начинается работа майн
 //        тут только вызваем методы или пишем логику
         calculation(); //вызов метод расчета а+b и вывода на консоль
+        next();
     } //после этой скобки заканчивается работа метода майн
 
     //тут пишем уже метод calculation
@@ -12,7 +13,8 @@ public class Practice {//начало класса
         int sum = a + b;
         System.out.println(sum);
         if (b > a) {
-            next();
+            String ss = next();
+            System.out.println(ss);
         }
     } //после этой скобки заканчивается работа метода calculation
 

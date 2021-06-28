@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Homework {
 
     public static void main(String[] args) {
@@ -15,7 +17,11 @@ public class Homework {
      * 2. Дополнительно: сделать проверку если сумма a и b больше чем максимальное значение int то вернуть -1
      **/
     public static int sum(int a, int b) {
-        return 0;
+        long sum = a + (long) b;
+        if (sum > Integer.MAX_VALUE) {
+            return -1;
+        }
+        return a + b;
     }
 
     /**
@@ -34,7 +40,12 @@ public class Homework {
      * Метод должен вернуть 10
      */
     public static int max(int a, int b) {
-        return 0;
+//        if (a >= b) {
+//            return a;
+//        } else {
+//            return b;
+//        }
+        return Math.max(a, b);
     }
 
     /**
@@ -46,6 +57,13 @@ public class Homework {
      * Метод должен return 3.0
      */
     public static double average(int[] array) {
+        if (array != null && array.length > 0) {
+            double sum = 0;
+            for (int j : array) {
+                sum += j;
+            }
+            return sum / array.length;
+        }
         return 0;
     }
 
@@ -53,8 +71,22 @@ public class Homework {
      * Метод должен вернуть максимальый элемент массива. Пример: array = {1,2,10,3} метод возвращает 10
      **/
     public static int max(int[] array) {
-        return 0;
+//        int max = Integer.MIN_VALUE;
+//        for (int element : array) {
+//            if (element > max) {
+//                max = element;
+//            }
+//        }
+//        return max;
+        if (array != null) {
+            return Arrays.stream(array)
+                    .max()
+                    .orElse(0);
+        } else {
+            return 0;
+        }
     }
+
 
     /**
      * Используя теорему Пифагора, вычислите значение гипотенузы. Квадрат гипотенузы = сумме квадратов катетов
@@ -70,6 +102,8 @@ public class Homework {
      * return 20
      */
     public static double calculateHypotenuse(int a, int b) {
-        return 0;
+//        return Math.pow(Math.pow(a, 2) + Math.pow(b, 2), 0.5);
+//        return Math.sqrt(a * a + b * b);
+        return Math.hypot(a, b);
     }
 }

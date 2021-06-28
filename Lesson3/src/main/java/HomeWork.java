@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
 public class HomeWork {
 
     public static void main(String[] args) {
@@ -15,14 +19,25 @@ public class HomeWork {
         printPrimeNumbers();
     }
 
-    /**
-     * Необходимо прочитать с консоли значение числа типа int,
-     * далее создать одноменрый массив типа int размера прочитаного с консоли
-     * далее заполнить массив случайными значениями
-     * далее вывести массив на консоль
-     */
     private static void printArray() {
-        // тут пишем логику
+        Scanner scanner = new Scanner(System.in);
+        int number;
+        do {
+            System.out.println("Введите положительное целое число");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Это не число!!!");
+                scanner.next();
+            }
+            number = scanner.nextInt();
+        } while (number <= 0);//false
+
+        int[] array = new int[number];//5
+        Random random = new Random();
+        for (int i = 0; i < array.length; i++) {
+            array[i] = random.nextInt(100);
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
     }
 
     /**
@@ -33,8 +48,14 @@ public class HomeWork {
      * вернуть number после выполнения операций
      */
     public static int operation(int number) {
-        // тут пишем логику
-        return 0;
+        if (number > 0) {
+            number++;
+        } else if (number < 0) {
+            number = number - 2;
+        } else {
+            number = 10;
+        }
+        return number;
     }
 
     /**
@@ -43,8 +64,13 @@ public class HomeWork {
      * в котором это значение распечатается на консоль.
      */
     public static int calculateCountOfOddElementsInMatrix(int[] ints) {
-        // тут пишем логику
-        return 0;
+        int count = 0;
+        for (int i : ints) {
+            if (i % 2 != 0) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -57,8 +83,51 @@ public class HomeWork {
      * @param count - количество программистов
      */
     public static void countDevs(int count) {
-        // тут пишем логику
+        int c100 = count % 100; //120
+        int c10 = c100 % 10;
+        if (c100 >= 11 && c100 <= 19) {
+            System.out.println(count + " программистов");
+        } else if (c10 >= 2 && c10 <= 4) {
+            System.out.println(count + " программиста");
+        } else if (c10 == 1) {
+            System.out.println(count + " программист");
+        } else {
+            System.out.println(count + " программистов");
+        }
     }
+
+    public static void bb(int count) {
+//        System.out.println("_COUNT_ программистов");
+        if (count >= 0) {
+            if (count % 100 >= 11 && count % 100 <= 14) {
+                System.out.println(count + " программистов");
+            } else {
+                switch (count % 10) {
+                    case 0:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9: {
+                        System.out.println(count + " программистов");
+                        break;
+                    }
+                    case 1: {
+                        System.out.println(count + " программист");
+                        break;
+                    }
+                    case 2:
+                    case 3:
+                    case 4: {
+                        System.out.println(count + " программиста");
+                    }
+                }
+            }
+        } else {
+            System.out.println("Орицательного числа программистов не существует!");
+        }
+    }
+
 
     /**
      * Метод должен выводить разные строки в консоли в зависимости от некоторых условий:
@@ -67,14 +136,45 @@ public class HomeWork {
      * - если остаток от деления на 3 и 5 равен нулю 0 ,то вывести "foobar" (example of number - 15)
      */
     public static void foobar(int number) {
-        // тут пишем логику
+        if (number % 3 == 0) {
+            if (number % 5 != 0) {
+                System.out.println("foo");
+            } else {
+                System.out.println("foobar");
+            }
+        } else if (number % 5 == 0) {
+            System.out.println("bar");
+        }
+
+//        if (number % 3 == 0) {
+//            System.out.print("foo");
+//        }
+//        if (number % 5 == 0) {
+//            System.out.print("bar");
+//        }
     }
 
     /**
      * заполнить рандомно 2-х мерный массив и посчитать сумму элементов на диагонали
      */
     public static void calculateSumOfDiagonalElements() {
-        //пишем логику и выводим результат используя System.out.println
+        Scanner scanner = new Scanner(System.in);
+        int size = scanner.nextInt();
+//        int[][] matrix = new int[size][size];
+        Random random = new Random();
+        int sum = 0;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                int value = random.nextInt(100);
+//                matrix[i][j] = value;
+                System.out.print(value + " ");
+                if (i == j) {
+                    sum += value;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("Сумма = " + sum);
     }
 
 
@@ -101,7 +201,33 @@ public class HomeWork {
      * Обратите внимание, что 21% 3 == 0 и 21% 7 = 0, но выводить надо не +-, а +
      */
     public static void printMatrix() {
-        // тут пишем логику
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        int height = scanner.nextInt();
+        int width = scanner.nextInt();
+
+        if (height > 0 & width > 0) {
+            int[][] matrix = new int[height][width];
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix[i].length; j++) {
+                    matrix[i][j] = random.nextInt(100);
+                }
+            }
+            for (int[] row : matrix) {
+                for (int element : row) {
+                    if (element % 3 == 0) {
+                        System.out.print("+ ");
+                    } else if (element % 7 == 0) {
+                        System.out.print("- ");
+                    } else {
+                        System.out.print("* ");
+                    }
+                }
+                System.out.print("\n");
+            }
+        } else {
+            System.out.println("unavailable values");
+        }
     }
 
     /**
@@ -110,6 +236,54 @@ public class HomeWork {
      * что такое просто число (https://www.webmath.ru/poleznoe/formules_18_5.php)
      */
     public static void printPrimeNumbers() {
-        // тут пишем логику
+        int count = 0;
+        for (int i = 2; i < 1000; i++) {
+            boolean isPrimeNumber = true;
+            for (int j = 2; j * j <= i; j++) {
+                if (i % j == 0) {
+                    isPrimeNumber = false;
+                    break;
+                }
+            }
+            if (isPrimeNumber) {
+                count++;
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+        System.out.println(count);
+    }
+
+    public static void printPrimeNumbers3() {
+        int count = 0;
+        for (int i = 2; i < 1000; i++) {
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    break;
+                }
+                if (i == j + 1) {
+                    count++;
+                    System.out.print(i + " ");
+                }
+            }
+        }
+        System.out.println();
+        System.out.println(count);
+    }
+
+    public static void printPrimeNumbers2() {
+        int currentNumber = 1;
+        ArrayList<Integer> foundPrimes = new ArrayList<Integer>();
+        checkingPrimes:
+        while (currentNumber < 1000) {
+            currentNumber++;
+            for (int prime : foundPrimes) {
+                if (currentNumber % prime == 0) {
+                    continue checkingPrimes;
+                }
+            }
+            foundPrimes.add(currentNumber);
+        }
+        System.out.println(foundPrimes.toString());
     }
 }
